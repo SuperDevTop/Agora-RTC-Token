@@ -12,17 +12,18 @@ app.get('/api',(req,res)=>{
 })
 
 app.post("/rtctoken", (req, res) => {
-  const appID = "afee3e6b07a94b28b4736ff2c5937313";
-  const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
-  const expirationTimeInSeconds = 3600;
-  const uid = 0;
-  const role = Agora.RtcRole.PUBLISHER;
-  const channel = req.body.channel;
-  const currentTimestamp = Math.floor(Date.now() / 1000);
-  const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
+  // const appID = "afee3e6b07a94b28b4736ff2c5937313";
+  // const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
+  // const expirationTimeInSeconds = 3600;
+  // const uid = 0;
+  // const role = Agora.RtcRole.PUBLISHER;
+  // const channel = req.body.channel;
+  // const currentTimestamp = Math.floor(Date.now() / 1000);
+  // const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
 
-  const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
-  res.send({ uid, token });
+  // const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
+  // res.send({ uid, token });
+    console.log("hello world");
 });
 
 app.listen(3000, () => {
