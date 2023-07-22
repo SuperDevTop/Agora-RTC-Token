@@ -6,6 +6,11 @@ const Agora = require("agora-token");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/api',(req,res)=>{
+    res.send(`<h5 style="color:green">
+        Hey Geek! you just deployed serverless express api</h5>`)
+})
+
 app.post("/rtctoken", (req, res) => {
   const appID = "afee3e6b07a94b28b4736ff2c5937313";
   const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
