@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.get('/api',(req,res)=>{
     res.send(`<h5 style="color:green">
-        Hey Geek! you just deployed serverless express api</h5>`)
+        Hello. You just deployed serverless express api</h5>`)
 })
 
 app.post("/rtctoken", (req, res) => {
