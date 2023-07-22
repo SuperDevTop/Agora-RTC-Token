@@ -6,29 +6,33 @@ const Agora = require("agora-token");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/api1',(req,res)=>{
-    res.send(`<h5 style="color:green">
-        Hello. You just deployed serverless express api</h5>`)
+app.post('/api',(req,res)=>{
+    const appID = "afee3e6b07a94b28b4736ff2c5937313";
+    const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
+    const expirationTimeInSeconds = 3600;
+    const uid = 0;
+    const role = Agora.RtcRole.PUBLISHER;
+    const channel = req.body.channel;
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
+
+    const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
+    res.send({ uid, token });
 })
 
-app.get('/rtctoken',(req,res)=>{
-    res.send(`<h5 style="color:green">
-        rtctoken</h5>`)
-})
+// app.post('/rtctoken', (req, res) => {
+//   const appID = "afee3e6b07a94b28b4736ff2c5937313";
+//   const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
+//   const expirationTimeInSeconds = 3600;
+//   const uid = 0;
+//   const role = Agora.RtcRole.PUBLISHER;
+//   const channel = req.body.channel;
+//   const currentTimestamp = Math.floor(Date.now() / 1000);
+//   const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
 
-app.post('/rtctoken', (req, res) => {
-  const appID = "afee3e6b07a94b28b4736ff2c5937313";
-  const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
-  const expirationTimeInSeconds = 3600;
-  const uid = 0;
-  const role = Agora.RtcRole.PUBLISHER;
-  const channel = req.body.channel;
-  const currentTimestamp = Math.floor(Date.now() / 1000);
-  const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
-
-  const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
-  res.send({ uid, token });
-});
+//   const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
+//   res.send({ uid, token });
+// });
 
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
