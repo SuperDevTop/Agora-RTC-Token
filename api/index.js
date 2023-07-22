@@ -11,7 +11,7 @@ app.get('/api',(req,res)=>{
         Hello. You just deployed serverless express api</h5>`)
 })
 
-app.post("/rtctoken", (req, res) => {
+app.get("/rtctoken", (req, res) => {
   // const appID = "afee3e6b07a94b28b4736ff2c5937313";
   // const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
   // const expirationTimeInSeconds = 3600;
