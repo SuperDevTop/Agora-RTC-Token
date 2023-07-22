@@ -6,9 +6,14 @@ const Agora = require("agora-token");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/api',(req,res)=>{
+app.get('/api1',(req,res)=>{
     res.send(`<h5 style="color:green">
         Hello. You just deployed serverless express api</h5>`)
+})
+
+app.get('/rtctoken',(req,res)=>{
+    res.send(`<h5 style="color:green">
+        rtctoken</h5>`)
 })
 
 app.post('/rtctoken', (req, res) => {
