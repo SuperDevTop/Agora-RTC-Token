@@ -1,0 +1,25 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const Agora = require("agora-token");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post("/rtctoken", (req, res) => {
+  const appID = "afee3e6b07a94b28b4736ff2c5937313";
+  const appCertificate = "bb4dfb6f65ef48e8af1fdfda24038a03";
+  const expirationTimeInSeconds = 3600;
+  const uid = 0;
+  const role = Agora.RtcRole.PUBLISHER;
+  const channel = req.body.channel;
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const expirationTimestamp = currentTimestamp + expirationTimeInSeconds;
+
+  const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
+  res.send({ uid, token });
+});
+
+app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});
