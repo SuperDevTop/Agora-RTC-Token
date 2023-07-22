@@ -23,7 +23,7 @@ app.get("/rtctoken", (req, res) => {
 
   // const token = Agora.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel, uid, role, expirationTimestamp);
   // res.send({ uid, token });
-    console.log("hello world");
+    res.send('Hello, world')
 });
 
 app.listen(3000, () => {
